@@ -2,6 +2,16 @@
 #include<iostream>
 #include<vector>
 using namespace std;
+
+int fiboRec(int n){
+    if(n==0 || n==1){
+        return n;
+    }
+
+    return fiboRec(n-1)+fiboRec(n-2);
+}
+
+//memoization
 int DPfibonacci(int n,vector<int> &f){
     if(n==0 || n==1){
         return n;
@@ -28,20 +38,27 @@ int fiboTabu(int n, vector<int> &dp){
 int main(){
     int n;
     cin>>n;
+
+    //recurstion
+    cout<<"Recursion: "<<fiboRec(n)<<endl;
+
+    // memoization
     vector<int> f(n+1,-1);
-   
-   for(int i=0; i<=n; i++){
-    cout<<DPfibonacci(i,f)<<" ";
-   }
+
+//    for(int i=0; i<=n; i++){
+//     cout<<DPfibonacci(i,f)<<" ";
+//    }
+
+    cout<<DPfibonacci(n,f);
    cout<<endl;
 
    vector<int> dp(n+1,0);
 
-   cout<<fiboTabu(n,dp)<<endl;
+   cout<<"Tabulation : "<<fiboTabu(n,dp)<<endl;
    
-   for(int i=0; i<=n; i++){
-    cout<<dp[i]<<" ";
-   }
+//    for(int i=0; i<=n; i++){
+//     cout<<dp[i]<<" ";
+//    }
     
     return 0;
 }
